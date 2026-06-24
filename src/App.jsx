@@ -16,22 +16,46 @@ const LANGS={
 };
 
 const LEVELS=[
-  {name:'Beach',     bg:['#87CEEB','#4682B4'],ground:'#C2A35A',enemy:'🦀 Yengeç',      ec:'#E05020',ea:'#C03010'},
-  {name:'Orman',     bg:['#228B22','#006400'],ground:'#5D4037',enemy:'🐸 Kurbağa',     ec:'#32CD32',ea:'#228B22'},
-  {name:'Çöl',       bg:['#EDC96A','#C8860A'],ground:'#D2691E',enemy:'🦂 Akrep',       ec:'#DAA520',ea:'#8B6914'},
-  {name:'Kar',       bg:['#E0F4FF','#B0D8F0'],ground:'#DDEEFF',enemy:'🐧 Penguen',     ec:'#555555',ea:'#333333'},
-  {name:'Lav',       bg:['#1A0000','#5C0A00'],ground:'#8B0000',enemy:'🐲 Ejderha',     ec:'#FF4500',ea:'#CC2200'},
-  {name:'Okyanus',   bg:['#006994','#003366'],ground:'#1A6B8A',enemy:'🦈 Köpekbalığı', ec:'#5F9EA0',ea:'#2E8B57'},
-  {name:'Uzay',      bg:['#000010','#0A0030'],ground:'#1C1C3C',enemy:'👾 Uzaylı',      ec:'#39FF14',ea:'#00AA00'},
-  {name:'Volkan',    bg:['#3D0000','#7A1800'],ground:'#4A0000',enemy:'🔥 Anka',        ec:'#FF6600',ea:'#FF2200'},
-  {name:'Orman Krt', bg:['#1B4D1B','#0D2B0D'],ground:'#2D5A1B',enemy:'🐆 Leopar',     ec:'#DAA520',ea:'#8B6914'},
-  {name:'Buz Mağ',   bg:['#003366','#001133'],ground:'#0A2A4A',enemy:'❄️ Yeti',        ec:'#AADDFF',ea:'#6699CC'},
-  {name:'Neon Kent', bg:['#0A0010','#150025'],ground:'#1A0030',enemy:'🤖 Robot',       ec:'#FF00FF',ea:'#9900CC'},
-  {name:'Lanetli',   bg:['#0D0D1A','#1A1A33'],ground:'#1A1A2E',enemy:'👻 Hayalet',    ec:'#DDDDFF',ea:'#8888CC'},
-  {name:'Gökkuşağı', bg:['#FF0066','#6600FF'],ground:'#AA00AA',enemy:'🦄 Unicorn',    ec:'#FF69B4',ea:'#FF1493'},
-  {name:'Şimşek',    bg:['#1A1A2E','#0D0D1A'],ground:'#2E2E4E',enemy:'⚡ Şimşek',     ec:'#FFD700',ea:'#FFA500'},
-  {name:'Son Boss',  bg:['#000000','#1A0000'],ground:'#0D0000',enemy:'💀 Karanlık Lord',ec:'#8B0000',ea:'#4B0000'},
+  {emoji:'🦀',dark:false,bg:['#87CEEB','#4682B4'],ground:'#C2A35A',ec:'#E05020',ea:'#C03010'},
+  {emoji:'🐸',dark:false,bg:['#228B22','#006400'],ground:'#5D4037',ec:'#32CD32',ea:'#228B22'},
+  {emoji:'🦂',dark:false,bg:['#EDC96A','#C8860A'],ground:'#D2691E',ec:'#DAA520',ea:'#8B6914'},
+  {emoji:'🐧',dark:false,bg:['#E0F4FF','#B0D8F0'],ground:'#DDEEFF',ec:'#555555',ea:'#333333'},
+  {emoji:'🐲',dark:true, bg:['#1A0000','#5C0A00'],ground:'#8B0000',ec:'#FF4500',ea:'#CC2200'},
+  {emoji:'🦈',dark:true, bg:['#006994','#003366'],ground:'#1A6B8A',ec:'#5F9EA0',ea:'#2E8B57'},
+  {emoji:'👾',dark:true, bg:['#000010','#0A0030'],ground:'#1C1C3C',ec:'#39FF14',ea:'#00AA00'},
+  {emoji:'🔥',dark:true, bg:['#3D0000','#7A1800'],ground:'#4A0000',ec:'#FF6600',ea:'#FF2200'},
+  {emoji:'🐆',dark:false,bg:['#1B4D1B','#0D2B0D'],ground:'#2D5A1B',ec:'#DAA520',ea:'#8B6914'},
+  {emoji:'❄️',dark:true, bg:['#003366','#001133'],ground:'#0A2A4A',ec:'#AADDFF',ea:'#6699CC'},
+  {emoji:'🤖',dark:true, bg:['#0A0010','#150025'],ground:'#1A0030',ec:'#FF00FF',ea:'#9900CC'},
+  {emoji:'👻',dark:true, bg:['#0D0D1A','#1A1A33'],ground:'#1A1A2E',ec:'#DDDDFF',ea:'#8888CC'},
+  {emoji:'🦄',dark:false,bg:['#FF0066','#6600FF'],ground:'#AA00AA',ec:'#FF69B4',ea:'#FF1493'},
+  {emoji:'⚡',dark:true, bg:['#1A1A2E','#0D0D1A'],ground:'#2E2E4E',ec:'#FFD700',ea:'#FFA500'},
+  {emoji:'💀',dark:true, bg:['#000000','#1A0000'],ground:'#0D0000',ec:'#8B0000',ea:'#4B0000'},
 ];
+
+// Localized level names (15 per language)
+const LVL_NAMES={
+  tr:['Sahil','Orman','Çöl','Kar','Lav','Okyanus','Uzay','Volkan','Derin Orman','Buz Mağarası','Neon Kent','Lanetli','Gökkuşağı','Fırtına','Son Patron'],
+  en:['Beach','Jungle','Desert','Snow','Lava','Ocean','Space','Volcano','Deep Jungle','Ice Cave','Neon City','Cursed','Rainbow','Storm','Final Boss'],
+  es:['Playa','Selva','Desierto','Nieve','Lava','Océano','Espacio','Volcán','Selva Profunda','Cueva de Hielo','Ciudad Neón','Maldito','Arcoíris','Tormenta','Jefe Final'],
+  pt:['Praia','Selva','Deserto','Neve','Lava','Oceano','Espaço','Vulcão','Selva Profunda','Caverna de Gelo','Cidade Neon','Amaldiçoado','Arco-íris','Tempestade','Chefe Final'],
+  de:['Strand','Dschungel','Wüste','Schnee','Lava','Ozean','Weltraum','Vulkan','Tiefer Dschungel','Eishöhle','Neonstadt','Verflucht','Regenbogen','Sturm','Endgegner'],
+  zh:['海滩','丛林','沙漠','雪地','熔岩','海洋','太空','火山','深林','冰洞','霓虹城','诅咒','彩虹','风暴','最终Boss'],
+  ja:['ビーチ','ジャングル','砂漠','雪原','溶岩','海洋','宇宙','火山','深い森','氷の洞窟','ネオン都市','呪われた','虹','嵐','ラスボス'],
+  ko:['해변','정글','사막','눈밭','용암','바다','우주','화산','깊은 정글','얼음 동굴','네온 시티','저주','무지개','폭풍','최종 보스'],
+};
+
+// Localized enemy names (15 per language, emoji stored on LEVELS)
+const FOES={
+  tr:['Yengeç','Kurbağa','Akrep','Penguen','Ejderha','Köpekbalığı','Uzaylı','Anka','Leopar','Yeti','Robot','Hayalet','Unicorn','Şimşek','Karanlık Lord'],
+  en:['Crab','Frog','Scorpion','Penguin','Dragon','Shark','Alien','Phoenix','Leopard','Yeti','Robot','Ghost','Unicorn','Thunder','Dark Lord'],
+  es:['Cangrejo','Rana','Escorpión','Pingüino','Dragón','Tiburón','Alienígena','Fénix','Leopardo','Yeti','Robot','Fantasma','Unicornio','Rayo','Señor Oscuro'],
+  pt:['Caranguejo','Sapo','Escorpião','Pinguim','Dragão','Tubarão','Alienígena','Fênix','Leopardo','Yeti','Robô','Fantasma','Unicórnio','Raio','Senhor das Trevas'],
+  de:['Krabbe','Frosch','Skorpion','Pinguin','Drache','Hai','Alien','Phönix','Leopard','Yeti','Roboter','Geist','Einhorn','Blitz','Dunkler Lord'],
+  zh:['螃蟹','青蛙','蝎子','企鹅','龙','鲨鱼','外星人','凤凰','豹','雪人','机器人','幽灵','独角兽','闪电','黑暗领主'],
+  ja:['カニ','カエル','サソリ','ペンギン','ドラゴン','サメ','エイリアン','フェニックス','ヒョウ','イエティ','ロボット','ゴースト','ユニコーン','サンダー','闇の王'],
+  ko:['게','개구리','전갈','펭귄','드래곤','상어','외계인','불사조','표범','예티','로봇','유령','유니콘','번개','어둠의 군주'],
+};
 
 export default function SlimeSoccer(){
   const cvs=useRef(null);
@@ -51,7 +75,7 @@ export default function SlimeSoccer(){
   const pausedRef=useRef(false);
 
   const [screen, setScreen] = useState('lang');
-  const [lang, setLang] = useState('tr');
+  const [lang, setLang] = useState('en');
   const [pMode, setPMode] = useState(null);
   const [level, setLevel] = useState(0);
   const [score, setScore] = useState({l:0,r:0});
@@ -67,7 +91,9 @@ export default function SlimeSoccer(){
     return()=>window.removeEventListener('resize',check);
   },[]);
 
-  const t = useCallback((k) => LANGS[lang]?.[k] || LANGS.tr[k] || k, [lang]);
+  const t = useCallback((k) => LANGS[lang]?.[k] || LANGS.en[k] || k, [lang]);
+  const lvName = useCallback((i) => (LVL_NAMES[lang] || LVL_NAMES.en)[i], [lang]);
+  const foe = useCallback((i) => (FOES[lang] || FOES.en)[i], [lang]);
 
   const togglePause = useCallback(()=>{
     pausedRef.current=!pausedRef.current;
@@ -252,7 +278,7 @@ export default function SlimeSoccer(){
     ctx.save();ctx.translate(sh.x,sh.y);
     const g=ctx.createLinearGradient(0,0,0,GH-GRND);g.addColorStop(0,lv.bg[0]);g.addColorStop(1,lv.bg[1]);
     ctx.fillStyle=g;ctx.fillRect(-10,-10,GW+20,GH+20);
-    const dark=['Uzay','Lav','Lanetli','Neon Kent','Şimşek','Son Boss','Buz Mağ','Volkan','Okyanus'].includes(lv.name);
+    const dark=lv.dark;
     if(dark)starsRef.current.forEach(st=>{const tw=0.4+0.6*Math.abs(Math.sin(Date.now()*0.001+st.b*10));ctx.save();ctx.globalAlpha=tw*0.9;ctx.fillStyle='#FFF';ctx.beginPath();ctx.arc(st.x,st.y,st.r,0,Math.PI*2);ctx.fill();ctx.restore();});
     ctx.fillStyle=lv.ground;ctx.fillRect(0,GH-GRND,GW,GRND);
     ctx.strokeStyle='rgba(255,255,255,0.3)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,GH-GRND);ctx.lineTo(GW,GH-GRND);ctx.stroke();
@@ -431,7 +457,7 @@ export default function SlimeSoccer(){
             </div>
           </div>
           <div style={{display:'flex',flexWrap:'wrap',gap:5,justifyContent:'center',marginBottom:16}}>
-            {LEVELS.map((l,i)=><span key={i} style={{padding:'3px 9px',borderRadius:20,background:l.bg[0],fontSize:11,border:'1px solid rgba(255,255,255,0.2)',color:'#fff',textShadow:'0 0 4px #000'}}>{i+1}. {l.name}</span>)}
+            {LEVELS.map((l,i)=><span key={i} style={{padding:'3px 9px',borderRadius:20,background:l.bg[0],fontSize:11,border:'1px solid rgba(255,255,255,0.2)',color:'#fff',textShadow:'0 0 4px #000'}}>{i+1}. {l.emoji} {lvName(i)}</span>)}
           </div>
           <button onClick={()=>setScreen('lang')} style={{padding:'6px 16px',background:'rgba(255,255,255,0.07)',border:'1px solid rgba(255,255,255,0.2)',borderRadius:8,color:'#aaa',cursor:'pointer',fontSize:12}}>
             {LANGS[lang].flag} {LANGS[lang].name} ▾
@@ -444,7 +470,7 @@ export default function SlimeSoccer(){
           <div style={{width:'100%',display:'flex',alignItems:'center',justifyContent:'space-between',background:'rgba(0,0,0,0.8)',padding:'6px 14px',borderRadius:'10px 10px 0 0',boxSizing:'border-box'}}>
             <div style={{color:'#00CED1',fontWeight:700,fontSize:20}}>🟦 {score.l}</div>
             <div style={{textAlign:'center'}}>
-              <div style={{fontSize:12,color:'#aaa'}}>{t('levelLabel')} {level+1}{t('sep')}15 — {lv.name} · {lv.enemy}</div>
+              <div style={{fontSize:12,color:'#aaa'}}>{t('levelLabel')} {level+1}{t('sep')}15 — {lvName(level)} · {lv.emoji} {foe(level)}</div>
               <div style={{width:180,height:5,background:'#333',borderRadius:3,margin:'3px auto',overflow:'hidden',maxWidth:'40vw'}}>
                 <div style={{width:`${prog}%`,height:'100%',background:`linear-gradient(90deg,${lv.ec},#FFD700)`,borderRadius:3}}/>
               </div>
@@ -464,8 +490,8 @@ export default function SlimeSoccer(){
             {lvAnim&&(
               <div style={{position:'absolute',inset:0,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',background:'rgba(0,0,0,0.75)'}}>
                 <div style={{fontSize:'min(46px,7vw)',fontWeight:900,color:'#FFD700'}}>🎉 {t('levelUp')} {level+1}!</div>
-                <div style={{fontSize:'min(20px,4vw)',color:LEVELS[Math.min(level+1,14)].ec,marginTop:10}}>{LEVELS[Math.min(level+1,14)].enemy}</div>
-                <div style={{fontSize:'min(14px,3vw)',color:'#888',marginTop:6}}>{LEVELS[Math.min(level+1,14)].name} {t('welcome')}</div>
+                <div style={{fontSize:'min(20px,4vw)',color:LEVELS[Math.min(level+1,14)].ec,marginTop:10}}>{LEVELS[Math.min(level+1,14)].emoji} {foe(Math.min(level+1,14))}</div>
+                <div style={{fontSize:'min(14px,3vw)',color:'#888',marginTop:6}}>{lvName(Math.min(level+1,14))} {t('welcome')}</div>
               </div>
             )}
             {paused&&!lvAnim&&(
