@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://1game1week.com/sitemap.xml

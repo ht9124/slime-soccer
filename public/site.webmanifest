@@ -1,0 +1,22 @@
+{
+  "name": "Slime Soccer — Free Online Soccer Game",
+  "short_name": "Slime Soccer",
+  "description": "Fast arcade head-soccer in your browser. 15 levels, 14 bosses, special skills, single player vs AI or local 2-player. No download — play free.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#111111",
+  "theme_color": "#00CED1",
+  "categories": ["games", "sports", "entertainment"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
